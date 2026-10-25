@@ -81,6 +81,16 @@ footer nav{display:flex;gap:18px;justify-content:center;margin:14px 0;font-size:
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
 
+.dek-d{font:italic 500 clamp(20px,2.4vw,28px)/1.4 var(--serif);color:#ddd;margin:14px 0 40px;max-width:30ch}
+.ab-top{align-items:start}
+.rows2>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px 32px;padding:22px 0;border-bottom:1px solid var(--line-l)}
+.rows2 b{font:800 clamp(24px,3vw,34px)/1.1 var(--serif)}.rows2 span{color:var(--mute-l);align-self:center}
+.tl{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-d)}
+.tl li{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-d)}
+.tl b{color:var(--red);font-weight:600}.tl span{color:#ddd}
+.note,.tl li.note span{color:var(--mute-d)!important}
+@media(max-width:700px){.rows2>div{grid-template-columns:1fr}.tl li{grid-template-columns:1fr}}
+
 .sig-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,64px);align-items:start}
 .tag-l{font:600 12px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
 .sig h2{font-size:clamp(34px,5vw,60px);margin:14px 0 14px}
@@ -139,7 +149,7 @@ nav.social{display:none}
 <h1>Music, machines, and the good life.</h1>
 <p class="lede">Deep dives into music, tech, film, culture, cannabis, wine, food, vehicles, and everything in between.</p>
 <form class="sub" method="post" target="_blank" action="https://sbstncewstyle.substack.com/api/v1/free?nojs=true"><label for="email" style="position:absolute;left:-9999px">Email address</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required><button type="submit">Subscribe</button></form>
-<p class="fine">Free newsletter, delivered through Substack. Unsubscribe anytime.</p></div></div></section>
+<p class="fine">Free newsletter. You’ll confirm your email on Substack. Unsubscribe anytime.</p></div></div></section>
 
 <section class="block light" id="deep-dive" style="border-top:2px solid var(--red)"><div class="wrap"><div class="sec-head"><h2>Latest deep dive</h2><p>Research on the left, watch along on the right</p></div>
 <article class="feature"><div class="story"><h3>The Architecture of Sound</h3><p class="dek">On the geometry of listening and the physical spaces of acoustics.</p><div class="meta">Music · 9 min read · Placeholder copy</div>
@@ -148,7 +158,7 @@ nav.social{display:none}
 <aside class="media" aria-label="Video"><div class="player ph i-turn"><span class="play"></span></div><div class="cap" id="cap">YouTube version</div>
 <div class="tabs"><button type="button" aria-pressed="true">YouTube</button><button type="button" aria-pressed="false">Reel</button><button type="button" aria-pressed="false">TikTok</button></div></aside></article></div></section>
 
-<section class="block light" id="newsletter" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>From the newsletter</h2><p id="feed-status"><a href="https://sbstncewstyle.substack.com/" target="_blank" rel="noopener">All posts on Substack →</a></p></div>
+<section class="block light" id="newsletter" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>From the newsletter</h2><p id="feed-status"><span id="feed-note" style="margin-right:14px"></span><a href="https://sbstncewstyle.substack.com/" target="_blank" rel="noopener">All posts on Substack →</a></p></div>
 <div class="tiles" id="substack-grid"></div></div></section>
 
 <section class="block dark" id="listen" style="border-top:2px solid var(--red)"><div class="wrap"><div class="sig-grid"><div>
@@ -168,14 +178,24 @@ nav.social{display:none}
 <div class="banner ph i-banner" role="img" aria-label="Substance With Style logo on a black and white split"></div>
 </div>
 
-<div class="pg" data-page="about"><section class="block dark"><div class="wrap"><h1 style="font-size:clamp(44px,8vw,96px);margin-bottom:40px">About</h1>
-<div class="about"><div class="gif ph i-gif" role="img" aria-label="Luke in a red jacket in a parking garage"></div>
-<div><p>Substance With Style™ is hosted by Luke Hardeman (aka Forrestt Runn), a writer, photographer and general weirdo.</p><p>He loves standup comedy and sometimes sings in a band.</p><p style="color:var(--mute-d)">Placeholder: add your longer story here. How the show started, the band, and why music, tech, comedy, cannabis, and cars belong in one place.</p>
-<p class="links"><a href="https://www.youtube.com/@substancewithstyle" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/sbstncewstyle" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@sbstncewstyle" target="_blank" rel="noopener">TikTok</a><a href="https://sbstncewstyle.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://soundcloud.com/forresttrunn" target="_blank" rel="noopener">SoundCloud</a></p><a class="btn-red" href="mailto:luke@substancewith.style">Get in touch</a></div></div></div></section></div>
+<div class="pg" data-page="about"><section class="block dark"><div class="wrap"><span class="tag-l">About</span>
+<h1 style="font-size:clamp(44px,8vw,96px);margin:14px 0 0">The host</h1><p class="dek-d">A channel about cannabis, humor, tech, and everything in between.</p>
+<div class="about ab-top"><div class="gif ph i-gif" role="img" aria-label="Luke in a red jacket in a parking garage"></div>
+<div><p>Substance With Style™ is hosted by Luke Hardeman (aka Forrestt Runn), a writer, photographer and general weirdo.</p><p>He loves standup comedy and sometimes sings in a band.</p><p class="note">[Add your longer story here: how the show started, the band, and why music, tech, comedy, cannabis, and cars belong in one place.]</p>
+<p class="links"><a href="https://www.youtube.com/@substancewithstyle" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/sbstncewstyle" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@sbstncewstyle" target="_blank" rel="noopener">TikTok</a><a href="https://sbstncewstyle.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://soundcloud.com/forresttrunn" target="_blank" rel="noopener">SoundCloud</a></p></div></div></div></section>
+<section class="block light"><div class="wrap"><div class="sec-head"><h2>What you’ll find here</h2><p>Six beats, one point of view</p></div><div class="rows2">
+<div><b>Music</b><span>Records, rooms, and rigs</span></div><div><b>Tech</b><span>Hardware and how it works</span></div><div><b>Film</b><span>Cinema, craft, criticism</span></div>
+<div><b>Culture</b><span>Commentary and essays</span></div><div><b>Table &amp; Smoke</b><span>Cannabis, wine, and food</span></div><div><b>Vehicles</b><span>Cars worth the drive</span></div></div></div></section>
+<section class="block dark"><div class="wrap"><div class="sec-head"><h2>The long way here</h2><p>A short timeline</p></div><ol class="tl">
+<li><b>2009–2011</b><span>Your Proof It Happened, a nightlife photoblog.</span></li>
+<li class="note"><b>[Year]</b><span>[Add a milestone: the band, the first show, the first column.]</span></li>
+<li class="note"><b>[Year]</b><span>[Add another.]</span></li>
+<li><b>2026</b><span>Substance With Style™ soft-launches.</span></li></ol></div></section>
+<section class="block light" style="text-align:center"><div class="wrap"><h2 style="font-size:clamp(30px,5vw,52px);margin-bottom:24px">Say hello</h2><a class="btn-red" href="mailto:luke@substancewith.style">Get in touch</a></div></section></div>
 </main>
 <footer><div class="wrap"><svg viewBox="0 0 100 80" aria-hidden="true"><use href="#specs"/></svg><nav aria-label="Footer social"><a href="https://www.youtube.com/@substancewithstyle" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/sbstncewstyle" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@sbstncewstyle" target="_blank" rel="noopener">TikTok</a><a href="https://sbstncewstyle.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://soundcloud.com/forresttrunn" target="_blank" rel="noopener">SoundCloud</a></nav><p>Substance With Style™ © 2026</p><p>A FiftyNinthStreet, LTD. publication</p></div></footer>
 <script>
-const SUB="sbstncewstyle";
+const SUB="sbstncewstyle";const TOPICS=["Music","Tech","Film","Culture","Table & Smoke","Vehicles"];const TAGIMG={"Music":"turn","Tech":"desk","Film":"cover","Culture":"spread","Table & Smoke":"wine","Vehicles":"dash"};const note=ok=>{const s=document.getElementById("feed-note");if(s&&location.search.includes("debug"))s.textContent=ok?"Live from Substack":"Showing placeholders"};
 const PRESS=[["Your published column title","Outlet name, 2026"],["Feature headline goes here","Outlet name, 2026"],["Interview or guest appearance","Outlet name, 2025"],["Another credited article","Outlet name, 2025"]];
 const IMG=["turn","desk","wine","dash","cover","spread"];
 const FB=[["Music","The record, the room, the rig"],["Tech","Hardware worth the desk space"],["Table & Smoke","A glass, a match, a slow night"],["Vehicles","Red dashboards and round gauges"],["Film","The late-night broadcast"],["Culture","Taste is a practice"]].map((a,i)=>({tag:a[0],title:a[1],date:"Coming soon",link:"https://sbstncewstyle.substack.com/",cls:"i-"+IMG[i]}));
@@ -183,11 +203,11 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const tiles=(l,el)=>el.innerHTML=l.map(p=>`<a class="tile" href="${esc(p.link)}" target="_blank" rel="noopener"><div class="ph ${p.cls||""}" ${p.img?`style="background-image:url('${esc(p.img)}')"`:""}></div><div class="t"><span class="tag">${esc(p.tag)}</span><h3>${esc(p.title)}</h3><span class="date">${esc(p.date)}</span></div></a>`).join("");
 async function loadFeed(){const el=document.getElementById("substack-grid"),st=document.getElementById("feed-status");
  try{const r=await fetch(`https://${SUB}.substack.com/feed`);if(!r.ok)throw 0;const x=new DOMParser().parseFromString(await r.text(),"text/xml");
- const l=[...x.querySelectorAll("item")].slice(0,6).map((i,n)=>{const en=i.querySelector("enclosure");return{tag:"Newsletter",title:i.querySelector("title")?.textContent||"Untitled",link:i.querySelector("link")?.textContent||"#",
+ const l=[...x.querySelectorAll("item")].slice(0,6).map((i,n)=>{const en=i.querySelector("enclosure");const cats=[...i.querySelectorAll("category")].map(c=>c.textContent.trim());const tag=TOPICS.find(t=>cats.some(c=>c.toLowerCase()===t.toLowerCase()))||cats[0]||"Newsletter";return{tag,title:i.querySelector("title")?.textContent||"Untitled",link:i.querySelector("link")?.textContent||"#",
  date:i.querySelector("pubDate")?new Date(i.querySelector("pubDate").textContent).toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"}):"",
- img:en?en.getAttribute("url"):null,cls:en?"":"i-"+IMG[n%IMG.length]}});
- if(!l.length)throw 0;tiles(l,el)}
- catch(e){tiles(FB,el)}}
+ img:en?en.getAttribute("url"):null,cls:en?"":"i-"+(TAGIMG[tag]||IMG[n%IMG.length])}});
+ if(!l.length)throw 0;tiles(l,el);note(true)}
+ catch(e){console.warn("Substack feed unavailable:",e);tiles(FB,el);note(false)}}
 document.getElementById("press-grid").innerHTML=PRESS.map(p=>`<a href="https://muckrack.com/" target="_blank" rel="noopener"><h3>${esc(p[0])}</h3><small>${esc(p[1])}</small><span class="go">Read</span></a>`).join("");
 document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");document.getElementById("cap").textContent=b.textContent+" version"});
 loadFeed();
