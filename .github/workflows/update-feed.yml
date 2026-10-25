@@ -16,9 +16,25 @@ jobs:
 
       - name: Download Substack feed
         run: |
-          curl --fail --silent --show-error --location --retry 3 \
-            -A "Mozilla/5.0 (compatible; SWS-feed-sync/1.0)" \
-            https://sbstncewstyle.substack.com/feed -o feed.xml
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+          ok=0
+          for url in "https://sbstncewstyle.substack.com/feed" "https://sbstncewstyle.substack.com/feed/"; do
+            code=$(curl --silent --location --retry 2 -A "$UA" \
+              -H "Accept: application/rss+xml, application/xml;q=0.9, */*;q=0.8" \
+              -H "Accept-Language: en-US,en;q=0.9" \
+              -o feed.tmp -w "%{http_code}" "$url" || true)
+            echo "$url -> HTTP $code"
+            if [ "$code" = "200" ] && grep -q "<rss" feed.tmp; then
+              mv feed.tmp feed.xml
+              ok=1
+              break
+            fi
+          done
+          if [ "$ok" -eq 0 ]; then
+            echo "Could not download the feed. Start of the response:"
+            head -c 400 feed.tmp || true
+            exit 1
+          fi
           # drop the timestamp that changes every fetch, so we only commit real changes
           sed -i 's#<lastBuildDate>[^<]*</lastBuildDate>##' feed.xml
 
