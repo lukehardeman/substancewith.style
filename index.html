@@ -80,6 +80,7 @@ footer svg{width:44px;margin-bottom:14px;color:var(--red)}footer p{margin:6px 0;
 footer nav{display:flex;gap:18px;justify-content:center;margin:14px 0;font-size:14px}footer nav a{text-decoration:none}footer nav a:hover{color:var(--red)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
+.nopl::before{display:none}.story h3 a:hover{text-decoration:underline!important;text-decoration-color:var(--red)!important;text-underline-offset:4px}
 
 .dek-d{font:italic 500 clamp(20px,2.4vw,28px)/1.4 var(--serif);color:#ddd;margin:14px 0 40px;max-width:30ch}
 .ab-top{align-items:start}
@@ -152,11 +153,11 @@ nav.social{display:none}
 <p class="fine">Free newsletter. You’ll confirm your email on Substack. Unsubscribe anytime.</p></div></div></section>
 
 <section class="block light" id="deep-dive" style="border-top:2px solid var(--red)"><div class="wrap"><div class="sec-head"><h2>Latest deep dive</h2><p>Research on the left, watch along on the right</p></div>
-<article class="feature"><div class="story"><h3>The Architecture of Sound</h3><p class="dek">On the geometry of listening and the physical spaces of acoustics.</p><div class="meta">Music · 9 min read · Placeholder copy</div>
-<p class="dc">A room is the first instrument. Before a needle touches vinyl, the walls, floor, and furniture have already decided how the record will sound. The story starts with the space around the system, not the gear inside it.</p>
-<p>Replace this text with your research. Each story pairs its writing with a video that stays in view while the reader scrolls.</p></div>
-<aside class="media" aria-label="Video"><div class="player ph i-turn"><span class="play"></span></div><div class="cap" id="cap">YouTube version</div>
-<div class="tabs"><button type="button" aria-pressed="true">YouTube</button><button type="button" aria-pressed="false">Reel</button><button type="button" aria-pressed="false">TikTok</button></div></aside></article></div></section>
+<article class="feature" style="align-items:center"><div class="story"><span class="tag-l" id="dd-tag">Music</span>
+<h3 style="margin-top:12px"><a id="dd-title" href="https://sbstncewstyle.substack.com/p/lyrics-that-date-a-song-v-10" target="_blank" rel="noopener" style="text-decoration:none">Lyrics That Date A Song, v 1.0.</a></h3>
+<p class="dek" id="dd-dek">Some age better than others.</p><div class="meta" id="dd-meta">Music · Oct 25, 2026</div>
+<p class="dc" id="dd-ex" hidden></p><a class="btn-red" id="dd-link" href="https://sbstncewstyle.substack.com/p/lyrics-that-date-a-song-v-10" target="_blank" rel="noopener">Read the full post</a></div>
+<aside class="media" aria-label="Cover image"><a class="player nopl ph" id="dd-img" href="https://sbstncewstyle.substack.com/p/lyrics-that-date-a-song-v-10" target="_blank" rel="noopener" aria-label="Read Lyrics That Date A Song" style="aspect-ratio:1022/474;background-image:url('https://substack-post-media.s3.amazonaws.com/public/images/e4d3071a-4bd1-4311-9d46-ba1cf1516415_1022x474.png')"></a><div class="cap">From the newsletter</div></aside></article></div></section>
 
 <section class="block light" id="newsletter" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>From the newsletter</h2><p id="feed-status"><span id="feed-note" style="margin-right:14px"></span><a href="https://sbstncewstyle.substack.com/" target="_blank" rel="noopener">All posts on Substack →</a></p></div>
 <div class="tiles" id="substack-grid"></div></div></section>
@@ -179,7 +180,7 @@ nav.social{display:none}
 </div>
 
 <div class="pg" data-page="about"><section class="block dark"><div class="wrap"><span class="tag-l">About</span>
-<h1 style="font-size:clamp(44px,8vw,96px);margin:14px 0 0">The host</h1><p class="dek-d">I’m a city boy from Cali; L.A. is where I reside.</p>
+<h1 style="font-size:clamp(44px,8vw,96px);margin:14px 0 0">The host</h1><p class="dek-d">“I’m a city boy from Cali; L.A. is where I reside.”</p>
 <div class="about ab-top"><div class="gif ph i-gif" role="img" aria-label="Luke in a red jacket in a parking garage"></div>
 <div><p>Substance With Style™ is hosted by Luke Hardeman (aka Forrestt Runn), a writer, photographer and general weirdo.</p><p>He loves standup comedy and sometimes sings in a band.</p><p>Luke Hardeman (sometimes operating under the alias Forrestt Runn) is a digital media producer, certified specialty coffee barista, and cultural archivist. Raised on a steady diet of 90s VHS tapes, late-night cable, and Los Angeles public transit, he has spent his life reverse-engineering the media and environments around him.</p><p>Substance With Style™ is his public operating system.</p>
 <p class="links"><a href="https://www.youtube.com/@substancewithstyle" target="_blank" rel="noopener">YouTube</a><a href="https://www.instagram.com/sbstncewstyle" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@sbstncewstyle" target="_blank" rel="noopener">TikTok</a><a href="https://sbstncewstyle.substack.com/" target="_blank" rel="noopener">Substack</a><a href="https://soundcloud.com/forresttrunn" target="_blank" rel="noopener">SoundCloud</a></p></div></div></div></section>
@@ -189,8 +190,8 @@ nav.social{display:none}
 <section class="block dark"><div class="wrap"><div class="sec-head"><h2>The long way here</h2><p>A short timeline</p></div><ol class="tl">
 <li><b>1998–1999</b><span>On-air gig at KDIS AM 710 (Radio Disney).</span></li>
 <li><b>2001–2005</b><span>Theater nerd and wannabe documentarian at St. Bernard Catholic High School in Playa Del Rey, CA.</span></li>
-<li><b>2005–2006</b><span>The Posse Foundation sent me to Dickinson College. More theater, another radio gig (WDCV), and dropping out after one semester.</span></li>
-<li><b>2007–2009</b><span>A wild period in the wilderness of my early 20s. Barack Obama brought hope and change, and I learned what student loan interest rates meant.</span></li>
+<li><b>2005–2006</b><span>The Posse Foundation sent him to Dickinson College. More theater, another radio gig (WDCV), and dropping out after one semester.</span></li>
+<li><b>2007–2009</b><span>A wild period in the wilderness of his early 20s. Barack Obama brought hope and change, and he learned what student loan interest rates meant.</span></li>
 <li><b>2009–2011</b><span>Created Your Proof It Happened, a nightlife photoblog, and wrote for Chicks With Guns Magazine, all under a pseudonym: Markus Eliance.</span></li>
 <li><b>2012–2016</b><span>Finishing undergrad and creating Forrestt Runn / Group Hug at CSU Channel Islands.</span></li>
 <li><b>2016–2024</b><span>Odd jobs, with music and comedy writing in between. Explored culinary arts, barista training and latte art, cannabis cultivation, bartending, hospitality, and experimenting with GitHub and app development.</span></li>
@@ -206,12 +207,14 @@ const IMG=["turn","desk","wine","dash","cover","spread"];
 const FB=[["Music","The record, the room, the rig"],["Tech","Hardware worth the desk space"],["Table & Smoke","A glass, a match, a slow night"],["Vehicles","Red dashboards and round gauges"],["Film","The late-night broadcast"],["Culture","Taste is a practice"]].map((a,i)=>({tag:a[0],title:a[1],date:"Coming soon",link:"https://sbstncewstyle.substack.com/",cls:"i-"+IMG[i]}));
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tiles=(l,el)=>el.innerHTML=l.map(p=>`<a class="tile" href="${esc(p.link)}" target="_blank" rel="noopener"><div class="ph ${p.cls||""}" ${p.img?`style="background-image:url('${esc(p.img)}')"`:""}></div><div class="t"><span class="tag">${esc(p.tag)}</span><h3>${esc(p.title)}</h3><span class="date">${esc(p.date)}</span></div></a>`).join("");
+function exFrom(i){try{const c=i.getElementsByTagName("content:encoded")[0];if(!c)return"";const d=new DOMParser().parseFromString(c.textContent,"text/html");const p=[...d.querySelectorAll("p")].map(q=>q.textContent.trim()).find(t=>t.length>60)||"";return p.length>360?p.slice(0,360).replace(/\s+\S*$/,"")+"…":p}catch(e){return""}}
+function fillDeep(p){if(!p)return;const g=id=>document.getElementById(id);g("dd-title").textContent=p.title;g("dd-title").href=p.link;g("dd-link").href=p.link;g("dd-img").href=p.link;if(p.desc)g("dd-dek").textContent=p.desc;g("dd-tag").textContent=p.tag;g("dd-meta").textContent=p.tag+" · "+p.date;if(p.img)g("dd-img").style.backgroundImage='url("'+p.img+'")';if(p.ex){const e=g("dd-ex");e.textContent=p.ex;e.hidden=false}}
 async function loadFeed(){const el=document.getElementById("substack-grid"),st=document.getElementById("feed-status");
- try{const r=await fetch(`https://${SUB}.substack.com/feed`);if(!r.ok)throw 0;const x=new DOMParser().parseFromString(await r.text(),"text/xml");
- const l=[...x.querySelectorAll("item")].slice(0,6).map((i,n)=>{const en=i.querySelector("enclosure");const cats=[...i.querySelectorAll("category")].map(c=>c.textContent.trim());const tag=TOPICS.find(t=>cats.some(c=>c.toLowerCase()===t.toLowerCase()))||cats[0]||"Newsletter";return{tag,title:i.querySelector("title")?.textContent||"Untitled",link:i.querySelector("link")?.textContent||"#",
+ try{const r=await fetch(`https://${SUB}.substack.com/feed`);if(!r.ok)throw 0;let TM={};try{TM=await(await fetch("topics.json")).json()}catch(_){};const x=new DOMParser().parseFromString(await r.text(),"text/xml");
+ const l=[...x.querySelectorAll("item")].slice(0,6).map((i,n)=>{const en=i.querySelector("enclosure");const cats=[...i.querySelectorAll("category")].map(c=>c.textContent.trim());const tag=TOPICS.find(t=>cats.some(c=>c.toLowerCase()===t.toLowerCase()))||TM[(i.querySelector("link")?.textContent||"").split("/p/")[1]]||cats[0]||"Newsletter";return{tag,title:i.querySelector("title")?.textContent||"Untitled",link:i.querySelector("link")?.textContent||"#",
  date:i.querySelector("pubDate")?new Date(i.querySelector("pubDate").textContent).toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"}):"",
- img:en?en.getAttribute("url"):null,cls:en?"":"i-"+(TAGIMG[tag]||IMG[n%IMG.length])}});
- if(!l.length)throw 0;tiles(l,el);note(true)}
+ desc:i.querySelector("description")?.textContent||"",ex:exFrom(i),img:en?en.getAttribute("url"):null,cls:en?"":"i-"+(TAGIMG[tag]||IMG[n%IMG.length])}});
+ if(!l.length)throw 0;tiles(l,el);fillDeep(l[0]);note(true)}
  catch(e){console.warn("Substack feed unavailable:",e);tiles(FB,el);note(false)}}
 document.getElementById("press-grid").innerHTML=PRESS.map(p=>`<a href="https://muckrack.com/" target="_blank" rel="noopener"><h3>${esc(p[0])}</h3><small>${esc(p[1])}</small><span class="go">Read</span></a>`).join("");
 document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");document.getElementById("cap").textContent=b.textContent+" version"});
