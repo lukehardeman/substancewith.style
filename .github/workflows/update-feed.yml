@@ -14,42 +14,53 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download Substack feed
+      - name: Fetch posts through an RSS-to-JSON service
         run: |
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
-          ok=0
-          code="none"
-          for url in "https://sbstncewstyle.substack.com/feed" "https://sbstncewstyle.substack.com/feed/"; do
-            code=$(curl --silent --location --retry 2 -A "$UA" \
-              -H "Accept: application/rss+xml, application/xml;q=0.9, */*;q=0.8" \
-              -H "Accept-Language: en-US,en;q=0.9" \
-              -D feed.hdr -o feed.tmp -w "%{http_code}" "$url" 2>/dev/null || true)
-            echo "$url -> HTTP $code" >> "$GITHUB_STEP_SUMMARY"
-            if [ "$code" = "200" ] && grep -q "<rss" feed.tmp; then
-              mv feed.tmp feed.xml
-              ok=1
-              break
-            fi
-          done
-          if [ "$ok" -eq 0 ]; then
-            hdr=$(head -n 6 feed.hdr 2>/dev/null | tr -d '\r' | tr '\n' ' ')
-            body=$(head -c 200 feed.tmp 2>/dev/null | tr '\r\n' '  ')
-            detail="HTTP $code | Headers: $hdr | Body: $body"
-            echo "$detail" >> "$GITHUB_STEP_SUMMARY"
-            echo "::error title=Feed download failed::$detail"
-            exit 1
-          fi
-          # drop the timestamp that changes every fetch, so we only commit real changes
-          sed -i 's#<lastBuildDate>[^<]*</lastBuildDate>##' feed.xml
+          url="https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fsbstncewstyle.substack.com%2Ffeed"
+          code=$(curl --silent --location --retry 3 --retry-delay 5 -o feed.raw -w "%{http_code}" "$url" || true)
+          echo "rss2json -> HTTP $code" >> "$GITHUB_STEP_SUMMARY"
+          CODE="$code" python3 - <<'PY'
+          import json, re, html, sys, os
+          code = os.environ.get("CODE", "?")
+          try:
+              d = json.load(open("feed.raw"))
+          except Exception as e:
+              d = {"status": "error", "message": "response was not JSON: %s" % e}
+          if d.get("status") != "ok":
+              msg = ("HTTP %s | %s" % (code, str(d)[:300])).replace("\n", " ")
+              print("::error title=Feed download failed::" + msg)
+              sys.exit(1)
+          def strip(t):
+              return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", t or ""))).strip()
+          out = []
+          for it in d.get("items", [])[:12]:
+              paras = [strip(p) for p in re.findall(r"<p[^>]*>(.*?)</p>", it.get("content", ""), re.S)]
+              ex = next((p for p in paras if len(p) > 60), "")
+              if len(ex) > 360:
+                  ex = re.sub(r"\s+\S*$", "", ex[:360]) + "…"
+              img = (it.get("enclosure") or {}).get("link") or it.get("thumbnail") or ""
+              cats = it.get("categories") or []
+              date = it.get("pubDate", "")
+              if re.match(r"^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d$", date):
+                  date = date.replace(" ", "T") + "Z"
+              out.append({"title": it.get("title", ""), "link": it.get("link", ""), "date": date,
+                          "description": strip(it.get("description", "")), "image": img,
+                          "tag": cats[0] if cats else "", "excerpt": ex})
+          if not out:
+              print("::error title=Feed download failed::no posts found in response")
+              sys.exit(1)
+          json.dump(out, open("posts.json", "w"), ensure_ascii=False, indent=1)
+          print("Saved %d posts" % len(out))
+          PY
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add feed.xml
+          git add posts.json
           if git diff --cached --quiet; then
             echo "No new posts."
           else
-            git commit -m "Update newsletter feed"
+            git commit -m "Update newsletter posts"
             git push
           fi
